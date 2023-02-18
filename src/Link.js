@@ -1,6 +1,6 @@
 // import React, { useContext } from "react";
 // import NavigationContext from "./context/navigation";
-import useNavigation from "./pages/hooks/use-navigation";
+import useNavigation from "./hooks/use-navigation";
 import className from "classnames";
 function Link({ to, children }) {
 //   const { navigate } = useContext(NavigationContext);
