@@ -1,54 +1,24 @@
-import React, { useState } from "react";
-// import Button from './Button';
-// import { GoBell, GoCloudDownload, GoDatabase } from 'react-icons/go'
-import Dropdown from "./Dropdown";
+import React from "react";
+import Link from "./Link";
+import Route from "./Route";
+import AccordionPage from "./pages/AccordionPage";
+import DropdownPage from "./pages/DropdownPage";
 function App() {
-  const [selection, setSelection] = useState(null);
-
-  const handleSelect = (option) => {
-    setSelection(option);
-  };
-  const options = [
-    { label: "Red", value: "red" },
-    { label: "Green", value: "green" },
-    { label: "Blue", value: "blue" },
-  ];
   return (
-    <div className="flex">
-      {/* <div>
-      <Button success rounded outline onClick={handleClick} className="mb-5">
-      <GoBell  />
-      Click Me!
-      </Button>
-      </div>
+    <div>
+      <Link to='/accordion'>Go to Accordion</Link>
+      <Link to='/dropdown'>Go to dropdown</Link>
       <div>
-      <Button danger outline onMouseEnter={handleClick}>
-      <GoCloudDownload />
-      But Now!</Button>
+        <Route path='/accordion'>
+          <AccordionPage />
+        </Route>
+        <Route path='/dropdown'>
+          <DropdownPage />
+        </Route>
+
       </div>
-      <div>
-      <Button secondary outline  onMouseLeave={handleClick}>
-      <GoDatabase />
-      But Now!</Button>
-      </div>
-      <div>
-      <Button warning>See Detail!</Button>
-      </div>
-      <div>
-      <Button primary rounded>Hide Adds!</Button>
-      </div> */}
-      <Dropdown
-        options={options}
-        value={selection}
-        onChange={handleSelect}
-      />
-      <Dropdown
-        options={options}
-        value={selection}
-        onChange={handleSelect}
-      />
     </div>
-  );
+  )
 }
 
 export default App;
