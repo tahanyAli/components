@@ -3,6 +3,7 @@ import Link from "./Link";
 import Route from "./Route";
 import AccordionPage from "./pages/AccordionPage";
 import DropdownPage from "./pages/DropdownPage";
+
 function App() {
   return (
     <div>
@@ -15,7 +16,7 @@ function App() {
         <Route path='/dropdown'>
           <DropdownPage />
         </Route>
-
+        
       </div>
     </div>
   )
