@@ -3,31 +3,59 @@ import React, { useReducer } from "react";
 import Button from "../Button";
 import Panel from "../Panel";
 // import useCounter from "../hooks/use-counter";
-const INCREMENT_COUNT = 'increment';
-const DECREMENT_COUNT = 'decrement';
-const SET_VALUE_TO_ADD = 'change-value';
+const INCREMENT_COUNT = "increment";
+const DECREMENT_COUNT = "decrement";
+const SET_VALUE_TO_ADD = "change_value";
+const ADD_VALUE_TO_COUNT = 'add_value_to_count'
 
 const reducer = (state, action) => {
-  if (action.type === INCREMENT_COUNT) {
-    return {
-      ...state,
-      count: state.count + 1,
-    };
-  }
-  if (action.type === DECREMENT_COUNT) {
-    return {
-      ...state,
-      count: state.count - 1,
-    };
-  }
+  switch (action.type) {
+    case INCREMENT_COUNT:
+      return {
+        ...state,
+        count: state.count + 1,
+      };
 
-  if (action.type === SET_VALUE_TO_ADD) {
-    return {
-      ...state,
-      valueToAdd: action.payload,
-    };
+    case DECREMENT_COUNT:
+      return {
+        ...state,
+        count: state.count - 1,
+      };
+
+    case SET_VALUE_TO_ADD:
+      return {
+        ...state,
+        valueToAdd: action.payload,
+      };
+    case ADD_VALUE_TO_COUNT:
+      return {
+        ...state,
+        count: state.count + state.valueToAdd,
+        valueToAdd: 0
+      };
+    default:
+      return state;
   }
-  return state;
+  // if (action.type === INCREMENT_COUNT) {
+  //   return {
+  //     ...state,
+  //     count: state.count + 1,
+  //   };
+  // }
+  // if (action.type === DECREMENT_COUNT) {
+  //   return {
+  //     ...state,
+  //     count: state.count - 1,
+  //   };
+  // }
+
+  // if (action.type === SET_VALUE_TO_ADD) {
+  //   return {
+  //     ...state,
+  //     valueToAdd: action.payload,
+  //   };
+  // }
+  // return state;
 };
 function CounterPage({ initialCount }) {
   // const {count, increment} = useCounter(initialCount);
@@ -64,6 +92,9 @@ function CounterPage({ initialCount }) {
     event.preventDefault();
     // setCount(count + valueToAdd);
     // setValueToAdd(0);
+    dispatch({
+      type: ADD_VALUE_TO_COUNT,
+    })
   };
   return (
     <Panel className="m-3">
